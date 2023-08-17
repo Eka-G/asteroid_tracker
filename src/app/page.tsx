@@ -1,5 +1,11 @@
-import styles from "./page.module.css";
+import { HeroImg } from "@components";
+import styles from "./page.module.scss";
 
 export default function Home() {
-  return <main className={styles.main}></main>;
+  return (
+    <main className={styles.main}>
+      <HeroImg />
+      <div></div>
+    </main>
+  );
 }

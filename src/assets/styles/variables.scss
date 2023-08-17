@@ -1,6 +1,14 @@
 :root {
+  /* colors */
   --main-bg-color: #000000;
   --second-bg-color: #232526;
   --font-color: #ffffff;
-  --accent-colorr: #f86600;
+  --accent-color: #f86600;
+
+  /* hero image sizes */
+  --hero-width-xl: 400px;
+  --hero-width-lg: 300px;
+  --hero-width-sm: 50px;
+  --hero-height-xl: 620px;
+  --hero-height: 436px;
 }

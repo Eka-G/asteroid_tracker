@@ -7,8 +7,30 @@
 }
 
 body {
+  font-size: 16px;
   color: var(--font-color);
   background-color: var(--main-bg-color);
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+p {
+  line-height: 1.5rem;
 }
 
 a {

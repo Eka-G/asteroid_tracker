@@ -1,10 +1,6 @@
-import { Passion_One, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
+import { Header } from "@components";
 import "@/assets/styles/globals.scss";
-
-const passionOne = Passion_One({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -24,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

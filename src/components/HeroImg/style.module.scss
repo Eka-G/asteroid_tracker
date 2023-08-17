@@ -1,0 +1,25 @@
+.img {
+  position: fixed;
+  top: 138px;
+  left: 0;
+  width: var(--hero-width-xl);
+  height: var(--hero-height-xl);
+  background: left / contain no-repeat url("../../assets/img/planet_xl.png");
+  z-index: 1;
+}
+
+/* lg Desktop and Tablet */
+@media (max-width: 1200px) {
+  .img {
+    width: var(--hero-width-lg);
+    height: var(--hero-height);
+    background-image: url("../../assets/img/planet.png");
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .img {
+    left: calc(var(--hero-width-sm) - var(--hero-width-lg));
+  }
+}
