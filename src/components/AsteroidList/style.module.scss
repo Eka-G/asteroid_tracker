@@ -1,0 +1,41 @@
+.catalog {
+  max-width: 400px;
+
+  &__heading {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__btn {
+    color: var(--font-color);
+    border: none;
+    background-color: transparent;
+
+    &_active {
+      font-weight: 700;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__btn_separator {
+    margin: 0 5px;
+  }
+
+  &__list {
+    display: grid;
+    row-gap: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .catalog {
+    max-width: 278px;
+  }
+}
