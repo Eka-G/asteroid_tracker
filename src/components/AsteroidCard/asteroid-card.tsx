@@ -1,22 +1,11 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { AsteroidCardProps } from "@/shared/types";
 import { formatDate, getImgParams, getLunarPhraseEnding } from "./_helpers";
 import styles from "./style.module.scss";
 
-type AsteroidProps = {
-  info: {
-    name: string;
-    distanceKm: number;
-    distanceLunar: number;
-    size: number;
-    date: string;
-    isDangerous: boolean;
-    isDistanceInKm: boolean;
-  };
-};
-
-const AsteroidCard: React.FC<AsteroidProps> = ({
+const AsteroidCard: React.FC<AsteroidCardProps> = ({
   info: {
     name,
     distanceKm,
