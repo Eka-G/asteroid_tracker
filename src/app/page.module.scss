@@ -2,8 +2,12 @@
   position: relative;
   padding-top: 9px;
   display: grid;
-  grid-template-columns: var(--hero-width-xl) auto;
+  grid-template-columns: var(--hero-width-xl) auto auto;
   column-gap: 127px;
+
+  &__content {
+    display: flex;
+  }
 }
 
 /* lg Desktop and Tablet */
