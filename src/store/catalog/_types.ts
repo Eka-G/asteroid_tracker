@@ -31,6 +31,6 @@ export type CatalogActions =
   ActionMap<CatalogPayload>[keyof ActionMap<CatalogPayload>];
 
 export type DispatchValueType = {
-  fillCatalog: (asteroids: Asteroid[]) => void;
+  fillCatalog: () => void;
   clearCatalog: () => void;
 };

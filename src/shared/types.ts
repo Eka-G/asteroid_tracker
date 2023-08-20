@@ -1,4 +1,5 @@
 export interface Asteroid {
+  id: string;
   name: string;
   distanceKm: number;
   distanceLunar: number;

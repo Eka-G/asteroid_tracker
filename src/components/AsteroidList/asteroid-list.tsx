@@ -1,11 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AsteroidCard } from "@components";
-import data from "@/shared/data.json";
+import { useCatalog, useCatalogDispatch } from "@store/catalog";
 import styles from "./style.module.scss";
 
 const AsteroidList = () => {
   const [isKmDistance, setIsKmDistance] = useState(true);
+  const catalog = useCatalog();
+  const { fillCatalog } = useCatalogDispatch();
+
+  useEffect(() => {
+    fillCatalog();
+  }, [fillCatalog]);
 
   const kmClasses = isKmDistance
     ? `${styles.catalog__btn} ${styles.catalog__btn_active}`
@@ -14,30 +20,25 @@ const AsteroidList = () => {
     ? styles.catalog__btn
     : `${styles.catalog__btn} ${styles.catalog__btn_active}`;
 
-  const asteroidsData = data.near_earth_objects["2021-09-12"];
-  const asteroids = asteroidsData.map((asteroid) => {
-    return (
-      <AsteroidCard
-        key={asteroid.id}
-        info={{
-          name: asteroid.name.substring(
-            asteroid.name.indexOf("(") + 1,
-            asteroid.name.indexOf(")"),
-          ),
-          distanceKm: Number(
-            asteroid.close_approach_data[0].miss_distance.kilometers,
-          ),
-          distanceLunar: Number(
-            asteroid.close_approach_data[0].miss_distance.lunar,
-          ),
-          size: asteroid.estimated_diameter.meters.estimated_diameter_max,
-          date: asteroid.close_approach_data[0].close_approach_date,
-          isDangerous: asteroid.is_potentially_hazardous_asteroid,
-          isDistanceInKm: isKmDistance,
-        }}
-      />
-    );
-  });
+  const asteroids = catalog.asteroids.map(
+    ({ id, name, distanceKm, distanceLunar, size, date, isDangerous }) => {
+      return (
+        <AsteroidCard
+          key={id}
+          info={{
+            id,
+            name,
+            distanceKm,
+            distanceLunar,
+            size,
+            date,
+            isDangerous,
+            isDistanceInKm: isKmDistance,
+          }}
+        />
+      );
+    },
+  );
 
   const changeToLunar = () => {
     if (isKmDistance) setIsKmDistance(false);
