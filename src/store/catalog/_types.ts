@@ -1,4 +1,4 @@
-import { Asteroid } from "@/shared/types";
+import { Asteroid, ActionMap } from "@shared/types";
 
 export type CatalogStateType = {
   asteroids: Asteroid[];
@@ -10,17 +10,6 @@ export enum CatalogActionsTypes {
   FILL = "FILL_CATALOG",
   CLEAR = "CLEAR_CATALOG",
 }
-
-type ActionMap<M extends { [index: string]: any }> = {
-  [Key in keyof M]: M[Key] extends undefined
-    ? {
-        type: Key;
-      }
-    : {
-        type: Key;
-        payload: M[Key];
-      };
-};
 
 type CatalogPayload = {
   [CatalogActionsTypes.FILL]: Asteroid[];

@@ -1,6 +1,6 @@
 import { Roboto } from "next/font/google";
 import { Header } from "@components";
-import { CatalogProvider } from "@store/catalog";
+import { CatalogProvider, CartProvider } from "@store";
 import "@/assets/styles/globals.scss";
 
 const roboto = Roboto({
@@ -23,7 +23,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={roboto.className}>
         <Header />
-        <CatalogProvider>{children}</CatalogProvider>
+        <CatalogProvider>
+          <CartProvider>{children}</CartProvider>
+        </CatalogProvider>
       </body>
     </html>
   );

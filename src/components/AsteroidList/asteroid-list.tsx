@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AsteroidCard } from "@components";
-import { useCatalog, useCatalogDispatch } from "@store/catalog";
+import { useCatalog, useCatalogDispatch } from "@store";
 import styles from "./style.module.scss";
 
 const AsteroidList = () => {

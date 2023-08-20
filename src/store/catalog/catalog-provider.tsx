@@ -2,12 +2,9 @@
 import { useReducer, useCallback } from "react";
 import { AxiosResponse } from "axios";
 import { axios, type CatalogResponce } from "@api";
-import {
-  CatalogContext,
-  CatalogDispatchContext,
-  catalogReducer,
-  CatalogActionsTypes,
-} from "@store/catalog";
+import { CatalogContext, CatalogDispatchContext } from "./catalog-context";
+import { catalogReducer } from "./catalog-reducer";
+import { CatalogActionsTypes } from "./_types";
 import { initialState } from "./_initial-state";
 
 const currentDate = new Date().toJSON().slice(0, 10);
