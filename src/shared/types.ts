@@ -8,12 +8,12 @@ export interface Asteroid {
   isDangerous: boolean;
 }
 
-export interface AsteroidCard extends Asteroid {
+export interface AsteroidProps extends Asteroid {
   isDistanceInKm: boolean;
 }
 
 export interface AsteroidCardProps {
-  info: AsteroidCard;
+  info: AsteroidProps;
 }
 
 export type ActionMap<M extends { [index: string]: any }> = {

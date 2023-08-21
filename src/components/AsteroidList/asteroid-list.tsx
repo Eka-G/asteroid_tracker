@@ -1,17 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AsteroidCard } from "@components";
-import { useCatalog, useCatalogDispatch } from "@store";
+import { Asteroid } from "@shared/types";
 import styles from "./style.module.scss";
 
-const AsteroidList = () => {
-  const [isKmDistance, setIsKmDistance] = useState(true);
-  const catalog = useCatalog();
-  const { fillCatalog } = useCatalogDispatch();
+type AsteroidListProps = {
+  list: Asteroid[];
+  isInCatalog?: boolean;
+};
 
-  useEffect(() => {
-    fillCatalog();
-  }, [fillCatalog]);
+const AsteroidList = ({ list, isInCatalog }: AsteroidListProps) => {
+  const [isKmDistance, setIsKmDistance] = useState(true);
 
   const kmClasses = isKmDistance
     ? `${styles.catalog__btn} ${styles.catalog__btn_active}`
@@ -19,8 +18,11 @@ const AsteroidList = () => {
   const lunarClasses = isKmDistance
     ? styles.catalog__btn
     : `${styles.catalog__btn} ${styles.catalog__btn_active}`;
+  const title = isInCatalog
+    ? "Ближайшие подлёты астероидов"
+    : "Заказ отправлен!";
 
-  const asteroids = catalog.asteroids.map(
+  const asteroids = list.map(
     ({ id, name, distanceKm, distanceLunar, size, date, isDangerous }) => {
       return (
         <AsteroidCard
@@ -35,6 +37,7 @@ const AsteroidList = () => {
             isDangerous,
             isDistanceInKm: isKmDistance,
           }}
+          isInCatalog={isInCatalog}
         />
       );
     },
@@ -50,17 +53,19 @@ const AsteroidList = () => {
   return (
     <section className={styles.catalog}>
       <div className={styles.catalog__heading}>
-        <h2 className={styles.catalog__title}>Ближайшие подлёты астероидов</h2>
+        <h2 className={styles.catalog__title}>{title}</h2>
 
-        <div>
-          <button className={kmClasses} onClick={changeToKm}>
-            в километрах
-          </button>
-          <span className={styles.catalog__btn_separator}>|</span>
-          <button className={lunarClasses} onClick={changeToLunar}>
-            в лунных орбитах
-          </button>
-        </div>
+        {isInCatalog && (
+          <div>
+            <button className={kmClasses} onClick={changeToKm}>
+              в километрах
+            </button>
+            <span className={styles.catalog__btn_separator}>|</span>
+            <button className={lunarClasses} onClick={changeToLunar}>
+              в лунных орбитах
+            </button>
+          </div>
+        )}
       </div>
 
       <ul className={styles.catalog__list}>{asteroids}</ul>

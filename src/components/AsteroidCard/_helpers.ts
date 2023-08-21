@@ -30,15 +30,3 @@ export const formatDate = (date: string) => {
 
   return `${preparedDate[2]} ${rusMonth} ${preparedDate[0]}`;
 };
-
-export const getLunarPhraseEnding = (distance: number) => {
-  const lastLunarNumber = distance % 10;
-  const rightLunarPhraseEnding =
-    lastLunarNumber === 1
-      ? " лунная орбита"
-      : lastLunarNumber > 1 && lastLunarNumber < 5
-      ? " лунные орбиты"
-      : " лунных орбит";
-
-  return rightLunarPhraseEnding;
-};

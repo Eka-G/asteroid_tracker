@@ -1,6 +1,6 @@
 "use client";
 import { useReducer } from "react";
-import { AsteroidCard } from "@shared/types";
+import { AsteroidProps } from "@shared/types";
 import { CartContext, CartDispatchContext } from "./cart-context";
 import { cartReducer } from "./cart-reducer";
 import { CartActionsTypes } from "./_types";
@@ -13,7 +13,7 @@ export default function CartProvider({
 }) {
   const [cart, dispatch] = useReducer(cartReducer, initialState);
 
-  const addToCart = (asteroid: AsteroidCard) => {
+  const addToCart = (asteroid: AsteroidProps) => {
     dispatch({
       type: CartActionsTypes.ADD_TO_CART,
       payload: asteroid,

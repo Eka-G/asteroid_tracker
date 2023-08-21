@@ -1,11 +1,17 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { AsteroidCardProps } from "@/shared/types";
-import { formatDate, getImgParams, getLunarPhraseEnding } from "./_helpers";
+import { AsteroidCardProps } from "@shared/types";
+import { getPhraseEnding } from "@shared/helpers";
+import { useCartDispatch } from "@store";
+import { formatDate, getImgParams } from "./_helpers";
 import styles from "./style.module.scss";
 
-const AsteroidCard: React.FC<AsteroidCardProps> = ({
+interface CardProps extends AsteroidCardProps {
+  isInCatalog?: boolean;
+}
+
+const AsteroidCard: React.FC<CardProps> = ({
   info: {
     name,
     distanceKm,
@@ -15,17 +21,27 @@ const AsteroidCard: React.FC<AsteroidCardProps> = ({
     isDangerous,
     isDistanceInKm,
   },
+  info,
+  isInCatalog,
 }) => {
   const [isOrdered, setIsOrdered] = useState(false);
+  const { addToCart } = useCartDispatch();
 
   const imgParams = getImgParams(size);
   const editedDate = formatDate(date);
   const editedDistance = isDistanceInKm
     ? Math.round(distanceKm) + " км"
-    : Math.round(distanceLunar) + getLunarPhraseEnding(distanceLunar);
+    : Math.round(distanceLunar) +
+      getPhraseEnding({
+        parameter: distanceLunar,
+        firstEnding: "лунная орбита",
+        secondEnding: "лунных орбиты",
+        thirdEnding: "лунных орбит",
+      });
 
-  const toggleOrder = () => {
-    setIsOrdered(!isOrdered);
+  const handleOrder = () => {
+    addToCart(info);
+    setIsOrdered(true);
   };
 
   return (
@@ -49,16 +65,18 @@ const AsteroidCard: React.FC<AsteroidCardProps> = ({
       </div>
 
       <div className={styles.order}>
-        <button
-          className={
-            isOrdered
-              ? `${styles.order__btn} ${styles.order__btn_ordered}`
-              : styles.order__btn
-          }
-          onClick={toggleOrder}
-        >
-          {isOrdered ? "В корзине" : "Заказать"}
-        </button>
+        {isInCatalog && (
+          <button
+            className={
+              isOrdered
+                ? `${styles.order__btn} ${styles.order__btn_ordered}`
+                : styles.order__btn
+            }
+            onClick={handleOrder}
+          >
+            {isOrdered ? "В корзине" : "Заказать"}
+          </button>
+        )}
         {isDangerous && <span className={styles.order__warning}>Опасен</span>}
       </div>
     </li>
