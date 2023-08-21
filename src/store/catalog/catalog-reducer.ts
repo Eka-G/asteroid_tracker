@@ -13,7 +13,7 @@ export const catalogReducer = (
     case CatalogActionsTypes.FILL:
       return {
         ...state,
-        asteroids: action.payload,
+        asteroids: [...state.asteroids, ...action.payload],
       };
     case CatalogActionsTypes.CLEAR:
       return initialState;

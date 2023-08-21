@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 type EndingPropsType = {
   parameter: number;
   firstEnding: string;
@@ -20,4 +22,18 @@ export const getPhraseEnding = ({
       : ` ${thirdEnding}`;
 
   return rightPhraseEnding;
+};
+
+export const getEditedDate = (date: Date) => {
+  return date.toJSON().slice(0, 10);
+};
+
+export const getNextDay = (
+  currentDate: Date,
+  setCurrentDate: (value: SetStateAction<Date>) => void,
+) => {
+  const nextDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+  setCurrentDate(nextDate);
+
+  return getEditedDate(nextDate);
 };

@@ -1,3 +1,8 @@
 .page {
   display: flex;
+
+  &__loading {
+    margin: 24px 0;
+    color: var(--accent-color);
+  }
 }

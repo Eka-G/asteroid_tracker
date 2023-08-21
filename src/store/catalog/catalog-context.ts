@@ -6,7 +6,7 @@ import { CatalogStateType, DispatchValueType } from "./_types";
 export const CatalogContext = createContext<CatalogStateType>(initialState);
 
 export const CatalogDispatchContext = createContext<DispatchValueType>({
-  fillCatalog: () => {},
+  fillCatalog: (date: string) => {},
   clearCatalog: () => {},
 });
 
