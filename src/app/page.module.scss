@@ -1,28 +1,3 @@
-.main {
-  position: relative;
-  padding-top: 9px;
-  display: grid;
-  grid-template-columns: var(--hero-width-xl) auto auto;
-  column-gap: 127px;
-
-  &__content {
-    display: flex;
-  }
-}
-
-/* lg Desktop and Tablet */
-@media (max-width: 1200px) {
-  .main {
-    grid-template-columns: var(--hero-width-lg) auto;
-    column-gap: 58px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 576px) {
-  .main {
-    padding-top: 17px;
-    grid-template-columns: var(--hero-width-sm) auto;
-    column-gap: 24px;
-  }
+.page {
+  display: flex;
 }

@@ -1,6 +1,7 @@
 import { Roboto } from "next/font/google";
-import { Header } from "@components";
+import { Header, HeroImg } from "@components";
 import { CatalogProvider, CartProvider } from "@store";
+import styles from "./layout.module.scss";
 import "@/assets/styles/globals.scss";
 
 const roboto = Roboto({
@@ -24,7 +25,12 @@ export default function RootLayout({
       <body className={roboto.className}>
         <Header />
         <CatalogProvider>
-          <CartProvider>{children}</CartProvider>
+          <CartProvider>
+            <main className={styles.main}>
+              <HeroImg />
+              {children}
+            </main>
+          </CartProvider>
         </CatalogProvider>
       </body>
     </html>
