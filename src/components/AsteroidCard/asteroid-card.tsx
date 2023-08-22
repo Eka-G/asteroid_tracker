@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
+import { DangerousWarning } from "@components";
 import { AsteroidCardProps } from "@shared/types";
 import { getPhraseEnding } from "@shared/helpers";
 import { useCartDispatch } from "@store";
@@ -77,7 +78,7 @@ const AsteroidCard: React.FC<CardProps> = ({
             {isOrdered ? "В корзине" : "Заказать"}
           </button>
         )}
-        {isDangerous && <span className={styles.order__warning}>Опасен</span>}
+        {isDangerous && <DangerousWarning />}
       </div>
     </li>
   );

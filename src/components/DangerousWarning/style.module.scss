@@ -1,0 +1,19 @@
+$warning-icon-size: 15px;
+$warning-icon-margin: 2px;
+
+.warning {
+    position: relative;
+    padding-left: $warning-icon-size + $warning-icon-margin;
+    font-size: 0.875rem;
+
+    &::before {
+      position: absolute;
+      display: block;
+      width: $warning-icon-size;
+      height: $warning-icon-size;
+      content: "";
+      top: 0;
+      left: -$warning-icon-margin;
+      background: center / contain no-repeat url("../../assets/img/warning-sign.png");
+    }
+  }
