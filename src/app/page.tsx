@@ -12,7 +12,7 @@ export default function Home() {
   const { fillCatalog } = useCatalogDispatch();
 
   const loadingText = (
-    <p className={styles.page__loading}>Минутку, грузим...</p>
+    <p className={styles.page__loading}>Минутку, грузим еще...</p>
   );
 
   useEffect(() => {

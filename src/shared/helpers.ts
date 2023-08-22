@@ -7,6 +7,21 @@ type EndingPropsType = {
   thirdEnding: string;
 };
 
+const MONTHS = [
+  "ЯНВ",
+  "ФЕВР",
+  "МАРТА",
+  "АПР",
+  "МАЯ",
+  "ИЮНЯ",
+  "ИЮЛЯ",
+  "АВГ",
+  "СЕНТ",
+  "ОКТ",
+  "НОЯБ",
+  "ДЕК",
+];
+
 export const getPhraseEnding = ({
   parameter,
   firstEnding,
@@ -36,4 +51,11 @@ export const getNextDay = (
   setCurrentDate(nextDate);
 
   return getEditedDate(nextDate);
+};
+
+export const formatDate = (date: string) => {
+  const preparedDate = date.split("-");
+  const rusMonth = MONTHS[Number(preparedDate[1]) - 1];
+
+  return `${preparedDate[2]} ${rusMonth} ${preparedDate[0]}`;
 };

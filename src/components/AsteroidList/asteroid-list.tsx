@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { AsteroidCard } from "@components";
-import { Asteroid } from "@shared/types";
+import { AsteroidInCatalog } from "@shared/types";
 import styles from "./style.module.scss";
 
 type AsteroidListProps = {
-  list: Asteroid[];
+  list: AsteroidInCatalog[];
   isInCatalog?: boolean;
 };
 

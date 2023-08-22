@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { DangerousWarning } from "@components";
 import { AsteroidCardProps } from "@shared/types";
-import { getPhraseEnding } from "@shared/helpers";
+import { formatDate, getPhraseEnding } from "@shared/helpers";
 import { useCartDispatch } from "@store";
-import { formatDate, getImgParams } from "./_helpers";
+import { getImgParams } from "./_helpers";
 import styles from "./style.module.scss";
 
 interface CardProps extends AsteroidCardProps {
@@ -14,6 +15,7 @@ interface CardProps extends AsteroidCardProps {
 
 const AsteroidCard: React.FC<CardProps> = ({
   info: {
+    id,
     name,
     distanceKm,
     distanceLunar,
@@ -58,7 +60,9 @@ const AsteroidCard: React.FC<CardProps> = ({
           alt="asteroid"
         />
         <div className={styles.params}>
-          <p className={styles.params__name}>{name}</p>
+          <Link className={styles.params__name} href={`/asteroid/${id}`}>
+            {name}
+          </Link>
           <span className={styles.params__size}>
             Ø {Math.round(size) + " м"}
           </span>
