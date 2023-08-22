@@ -1,13 +1,13 @@
 "use client";
 import { createContext, useContext } from "react";
-import { AsteroidProps } from "@shared/types";
+import { AsteroidInCatalog } from "@shared/types";
 import { initialState } from "./_initial-state";
 import { CartStateType, DispatchValueType } from "./_types";
 
 export const CartContext = createContext<CartStateType>(initialState);
 
 export const CartDispatchContext = createContext<DispatchValueType>({
-  addToCart: (asteroid: AsteroidProps) => {},
+  addToCart: (asteroid: AsteroidInCatalog) => {},
   clearCart: () => {},
 });
 

@@ -1,7 +1,7 @@
-import { AsteroidProps, ActionMap } from "@shared/types";
+import { AsteroidInCatalogProps, ActionMap } from "@shared/types";
 
 export type CartStateType = {
-  cartItems: AsteroidProps[];
+  cartItems: AsteroidInCatalogProps[];
   isLoading: boolean;
   cartError: string | null;
 };
@@ -12,13 +12,13 @@ export enum CartActionsTypes {
 }
 
 type CartPayload = {
-  [CartActionsTypes.ADD_TO_CART]: AsteroidProps;
+  [CartActionsTypes.ADD_TO_CART]: AsteroidInCatalogProps;
   [CartActionsTypes.CLEAR_CART]: undefined;
 };
 
 export type CartActions = ActionMap<CartPayload>[keyof ActionMap<CartPayload>];
 
 export type DispatchValueType = {
-  addToCart: (asteroid: AsteroidProps) => void;
+  addToCart: (asteroid: AsteroidInCatalogProps) => void;
   clearCart: () => void;
 };

@@ -1,7 +1,7 @@
-import { Asteroid, ActionMap } from "@shared/types";
+import { AsteroidInCatalog, ActionMap } from "@shared/types";
 
 export type CatalogStateType = {
-  asteroids: Asteroid[];
+  asteroids: AsteroidInCatalog[];
   isLoading: boolean;
   catalogError: string | null;
 };
@@ -12,7 +12,7 @@ export enum CatalogActionsTypes {
 }
 
 type CatalogPayload = {
-  [CatalogActionsTypes.FILL]: Asteroid[];
+  [CatalogActionsTypes.FILL]: AsteroidInCatalog[];
   [CatalogActionsTypes.CLEAR]: undefined;
 };
 
